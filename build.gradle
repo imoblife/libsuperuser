@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "23.0.2"
+
+	   sourceSets {
+        main {
+            manifest.srcFile 'libsuperuser/AndroidManifest.xml'
+            java.srcDirs = ['libsuperuser/src']
+            resources.srcDirs = ['libsuperuser/src']
+            aidl.srcDirs = ['libsuperuser/src']
+            renderscript.srcDirs = ['libsuperuser/src']
+            res.srcDirs = ['libsuperuser/res']
+            assets.srcDirs = ['libsuperuser/assets']
+        }
+
+        instrumentTest.setRoot('tests')
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+
+//    defaultConfig {
+//        minSdkVersion 15
+//        targetSdkVersion 23
+//        versionCode 1
+//        versionName "1.0"
+//    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libsuperuser/libs', include: ['*.jar'])
+}

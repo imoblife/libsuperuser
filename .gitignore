@@ -8,3 +8,5 @@ libsuperuser_example/proguard
 libsuperuser_example/dexguard
 libsuperuser_example/build
 libsuperuser_example/.settings
+/.idea
+/build
